@@ -8,9 +8,7 @@
         @show
 
         <title>
-            @section('title')
-            {{ config('app.name', 'Maronaz') }}
-            @endsection
+            @section('title', config('app.name'))
         </title>
 
         @section('stylesheets')
@@ -20,7 +18,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" href="#">Maronaz</a>
+            <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name') }}</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -30,18 +28,29 @@
 
                 <ul class="navbar-nav">
                     @section('user-menu')
-                    @if(isAdmin())
+                    @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Utilisateurs</a>
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
-                    @endif
                     <li class="nav-item">
-                        @if(user())
-                        <a class="nav-link" href="#">Déconnexion</a>
-                        @else
-                        <a class="nav-link" href="#">Connexion</a>
-                        @endif
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
+                    @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+
+                            @if(isAdmin())
+                            <a  class="dropdown-item" href="#">@lang("Users")</a>
+                            @endif
+                        </div>
+                    </li>
+                    @endguest
                     @show
                 </ul>
             </div>
