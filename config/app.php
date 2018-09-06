@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Maronaz'),
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -150,7 +150,9 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Collective\Html\HtmlServiceProvider::class,
+        RealRipley\BootstrapForm\BootstrapFormServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */
@@ -208,7 +210,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Form'     => Collective\Html\FormFacade::class,
+        'HTML'     => Collective\Html\HtmlFacade::class,
+        'BootForm' => RealRipley\BootstrapForm\Facades\BootstrapForm::class,
+        
     ],
 
 ];
