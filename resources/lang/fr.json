@@ -1,16 +1,68 @@
 {
-  "Confirm Password": "Confirmez le mot de passe",
-  "E-Mail Address": "Adresse courriel",
-  "Forgot Your Password?": "Vous avez oublié votre mot de passe ?",
-  "If you did not request a password reset, no further action is required.": "Si vous n'avez pas demandé de réinitialisation de mot de passe, aucune autre action n'est requise.",
-  "Login": "Connexion",
-  "Logout": "Déconnexion",
-  "Name": "Nom",
-  "Password": "Mot de passe",
-  "Register": "S'inscrire",
-  "Remember Me": "Se souvenir de moi",
-  "Reset Password": "Réinitialisation du mot de passe",
-  "Reset Password Notification": "Notification de réinitialisation du mot de passe",
-  "Send Password Reset Link": "Envoyer le lien de réinitialisation du mot de passe",
-  "You are receiving this email because we received a password reset request for your account.": "Vous avez reçu ce courriel parce que nous avons reçu une demande de réinitialisation de mot de passe pour votre compte."
+    "Confirm Password":
+            "Confirmez le mot de passe",
+    "E-Mail Address":
+            "Adresse courriel",
+    "Forgot Your Password?":
+            "Vous avez oublié votre mot de passe ?",
+    "If you did not request a password reset, no further action is required.":
+            "Si vous n'avez pas demandé de réinitialisation de mot de passe, aucune autre action n'est requise.",
+    "Login":
+            "Connexion",
+    "Logout":
+            "Déconnexion",
+    "Name":
+            "Nom",
+    "Password":
+            "Mot de passe",
+    "Register":
+            "S'inscrire",
+    "Remember Me":
+            "Se souvenir de moi",
+    "Reset Password":
+            "Réinitialisation du mot de passe",
+    "Reset Password Notification":
+            "Notification de réinitialisation du mot de passe",
+    "Send Password Reset Link":
+            "Envoyer le lien de réinitialisation du mot de passe",
+    "You are receiving this email because we received a password reset request for your account.":
+            "Vous avez reçu ce courriel parce que nous avons reçu une demande de réinitialisation de mot de passe pour votre compte.",
+    "Profile":
+            "Mon compte",
+    "Users": 
+            "Utilisateurs",
+    "User": 
+            "Utilisateur",
+    "Administrator":
+            "Administrateur",
+    "Confirm password":
+            "Confirmer le mot de passe",
+    "Cancel":
+            "Annuler",
+    "Add an user":
+            "Créer un utilisateur",
+    "Edit":
+            "Modifier",
+    "Delete":
+            "Supprimer",
+    "Do you really want to delete this user?":
+            "Voulez-vous vraiment supprimer cet utilisateur ?",
+    "Edit :user":
+            "Modifier :user",
+    "New user":
+            "Nouvel utilisateur",
+    "Welcome to QuickLaravel":
+            "Bienvenue dans QuickLaravel",
+    "Start quickly a Laravel 5 and Bootstrap 4 project with application structure, starter layout, authentication and user management out of the box":
+            "Créez rapidement une application, basée sur Laravel 5 et Bootstrap 4, comprenant la structure principale, un thème de base, la couche d'authentification et la gestion des utilisateurs",
+    "User created successfully. The user must follow reset password process to set his credential.":
+            "L'utilisateur a été créé. Il devra suivre la procédure de reset de mot de passe pour créer celui-ci.",
+    "Your profile was successfully updated.":
+            "Votre compte a été mis à jour.",
+    "User updated successfully.":
+            "L'utilisateur a été mis à jour.",
+    "You can't delete your own account.":
+            "Vous ne pouvez pas supprimer votre propre compte.",
+    "User deleted successfully.":
+            "L'utilisateur a été supprimé."
 }

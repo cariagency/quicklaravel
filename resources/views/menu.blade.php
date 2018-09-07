@@ -4,10 +4,10 @@
     @section('user-menu')
     @guest
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-user"></i> {{ __('Login') }}</a>
+        <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-user"></i> @lang("Login")</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('register') }}"><i class="fa fa-sign-in"></i> {{ __('Register') }}</a>
+        <a class="nav-link" href="{{ route('register') }}"><i class="fa fa-sign-in"></i> @lang("Register")</a>
     </li>
     @else
     <li class="nav-item dropdown">
@@ -22,7 +22,7 @@
             <a  class="dropdown-item" href="{{ route('users.index') }}"><i class="fa fa-users"></i> @lang("Users")</a>
             @endif
 
-            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> {{ __('Logout') }}</a>
+            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> @lang("Logout")</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
         </div>
     </li>

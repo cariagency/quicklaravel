@@ -1,11 +1,14 @@
 @extends('layout')
 
+@php($profile = (\Request::route()->getName() === 'users.profile'))
+@php($me = (user()->id === $user->id))
+
 @section('content')
 <main role="main" class="container" id="users-index">
     <div class="row">
         <div class="col">
             <h2>
-                @if($user->id)
+                @if($profile)
                 @lang("Profile")
                 @elseif($user->id)
                 @lang("Edit :user", ['user' => $user->name])
@@ -20,7 +23,7 @@
         <div class="col col-md-4">
             {!! BootForm::open($form_options) !!}
 
-            @if(isAdmin())
+            @if(isAdmin() && !$me)
             {!! BootForm::radios('type', 'Type', ['user' => __('User'), 'admin' => __('Administrator')], null, true) !!}
             @endif
 
@@ -28,7 +31,7 @@
 
             {!! BootForm::text('email', __('Email')) !!}
 
-            @if($user->id === user()->id)
+            @if($me)
             {!! BootForm::password('password', __('Password'), ['autocomplete' => 'off']) !!}
 
             {!! BootForm::password('password_confirmation', __('Confirm password'), ['autocomplete' => 'off']) !!}
@@ -36,7 +39,7 @@
 
             <div class="form-group">
                 <div>
-                    <a href="{{ route('users.index') }}" class="btn btn-light">Cancel</a>
+                    <a href="{{ route($profile ? 'home' : 'users.index') }}" class="btn btn-light">@lang("Cancel")</a>
                     <input class="btn btn-primary" type="submit">
                 </div>
             </div>
