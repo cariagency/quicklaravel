@@ -16,3 +16,7 @@ Route::get('/', function () {
 })->name('home');
 
 Auth::routes();
+
+Route::group(['middleware' => ['auth', 'admin_user']], function() {
+    Route::resource('users', 'UserController')->except(['show']);
+});
