@@ -31,7 +31,9 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ ucfirst($user->type) }}</td>
                         <td class="text-right actions">
+                            @if(user()->id !== $user->id)
                             <button type="submit" class="btn btn-danger btn-sm" title="Delete" data-action="{{ route('users.destroy', ['user' => $user->id]) }}"><i class="fa fa-trash"></i></button>
+                            @endif
                             <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="btn btn-primary btn-sm" title="Edit"><i class="fa fa-pencil"></i></a>
                         </td>
                     </tr>

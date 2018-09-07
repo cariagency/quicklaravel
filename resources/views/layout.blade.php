@@ -8,7 +8,9 @@
         @show
 
         <title>
-            @section('title', config('app.name'))
+            @section('title')
+            {{ config('app.name') }}
+            @show
         </title>
 
         @section('stylesheets')

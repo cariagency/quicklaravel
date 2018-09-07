@@ -11,7 +11,16 @@
         });
     }
 
+    function initUserForm() {
+        if (!$('#user-form').length) {
+            return;
+        }
+
+        $('#user-form [type="password"]').val('');
+    }
+
     $('document').ready(function () {
         initDeleteForm();
+        initUserForm();
     });
 }(jQuery));

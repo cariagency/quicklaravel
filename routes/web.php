@@ -17,6 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/profile', 'UserController@edit')->name('users.profile');
+    Route::put('/profile', 'UserController@update');
+});
+
 Route::group(['middleware' => ['auth', 'admin_user']], function() {
     Route::resource('users', 'UserController')->except(['show']);
 });

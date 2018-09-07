@@ -30,7 +30,14 @@ class UserController extends Controller {
         $user->type = 'user';
 
         return view('users.form', [
-            'user' => $user
+            'user' => $user,
+            'form_options' => [
+                'model' => $user,
+                'store' => 'users.store',
+                'update' => 'users.update',
+                'id' => 'user-form',
+                'autocomplete' => 'off'
+            ]
         ]);
     }
 
@@ -55,9 +62,26 @@ class UserController extends Controller {
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user) {
+    public function edit(User $user = null) {
+        $form_options = [
+            'id' => 'user-form',
+            'autocomplete' => 'off'
+        ];
+
+        if ($user === null) {
+            $user = $this->user;
+            $form_options['method'] = 'PUT';
+            $form_options['url'] = route('users.profile');
+        } else {
+            $form_options['store'] = 'users.store';
+            $form_options['update'] = 'users.update';
+        }
+
+        $form_options['model'] = $user;
+
         return view('users.form', [
-            'user' => $user
+            'user' => $user,
+            'form_options' => $form_options
         ]);
     }
 
@@ -68,7 +92,13 @@ class UserController extends Controller {
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UserForm $request, User $user) {
+    public function update(UserForm $request, User $user = null) {
+        $profile = ($user === null);
+
+        if ($profile) {
+            $user = $this->user;
+        }
+
         $data = array_filter($request->all());
 
         if (!empty($data['password'])) {
@@ -78,6 +108,10 @@ class UserController extends Controller {
         $user->fill($data);
 
         $user->save();
+
+        if ($profile) {
+            return redirect()->route('home')->with('success', "Your profile was successfully updated.");
+        }
 
         return redirect()->route('users.index')->with('success', "User updated successfully.");
     }
@@ -89,6 +123,10 @@ class UserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user) {
+        if ($user->id === $this->user->id) {
+            return redirect()->route('users.index')->with('danger', "You can't delete your own account.");
+        }
+
         $user->delete();
 
         return redirect()->route('users.index')->with('success', "User deleted successfully.");
