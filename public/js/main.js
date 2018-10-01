@@ -1,26 +1,30 @@
 (function ($) {
-    function initDeleteForm() {
-        if (!$('#delete-form').length) {
-            return;
-        }
-
-        $('button[data-action]').click(function () {
-            if (confirm($('#delete-form').data('confirm'))) {
-                $('#delete-form').attr('action', $(this).data('action')).submit();
-            }
-        });
-    }
-
-    function initUserForm() {
-        if (!$('#user-form').length) {
-            return;
-        }
-
-        $('#user-form [type="password"]').val('');
-    }
-
     $('document').ready(function () {
-        initDeleteForm();
-        initUserForm();
+        // Scrollers.
+        if ($('#scrollers').length) {
+            $("#scrollers a[href='#top']").click(function (e) {
+                e.preventDefault();
+                $("html").animate({scrollTop: 0});
+                return false;
+            });
+
+            $("#scrollers a[href='#bottom']").click(function (e) {
+                e.preventDefault();
+                $("html").animate({scrollTop: $("body").height()});
+                return false;
+            });
+        }
+
+        // Delete form.
+        if ($('#delete-form').length) {
+            $('button[data-action]').click(function () {
+                if (confirm($('#delete-form').data('confirm'))) {
+                    $('#delete-form').attr('action', $(this).data('action')).submit();
+                }
+            });
+        }
+
+        // Password fields.
+        $('[type="password"]').val('');
     });
 }(jQuery));
