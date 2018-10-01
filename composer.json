@@ -1,9 +1,9 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "cariagency/quicklaravel",
+    "description": "Start quickly a Laravel 5 and Bootstrap 4 project with application structure, starter layout, authentication and user management out of the box.",
     "keywords": [
-        "framework",
-        "laravel"
+        "laravel",
+        "bootstrap"
     ],
     "license": "MIT",
     "type": "project",
