@@ -4,9 +4,7 @@ Start quickly a Laravel 5 and Bootstrap 4 project with application structure, st
 
 ## Installation
 
-+ Clone the project : `git clone cariagency/quick-laravel myapp`
-+ Install dependencies: `cd myapp && composer install`
-+ Run Laravel install scripts: `composer run-script post-root-package-install && composer run-script post-create-project-cmd` 
++ Install the project : `composer create-project --stability=dev cariagency/quicklaravel myapp`
 + Update `.env` to fit your needs.
 + Run migrations: `php artisan migrate`
 + Seed database to create an admin user: `php artisan db:seed`
