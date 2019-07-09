@@ -54,3 +54,130 @@ body {
         margin-top: 2px;
     }
 }
+
+.upload-block{
+    margin-bottom: 15px;
+
+    input.form-control{
+        display: none;
+    }
+
+    .btn-add{
+        position:relative;
+        display: inline-block;
+
+        i{
+            display: none;
+        }
+
+        input {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+    }
+
+    .form-group{
+        margin: 0;
+
+        .invalid-feedback{
+            margin-bottom: 5px;
+        }
+    }
+
+    .help-block{
+        margin-top: -5px;
+    }
+
+    small{
+        display: block;
+        margin-top: 5px;
+        font-size: 10px;
+        font-style: italic;
+        color: #999;
+    }
+
+    .preview{
+        position: relative;
+        border-radius: .2em;
+        overflow: hidden;
+
+        .btn-delete{
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 0;
+        }
+
+        img{
+            display: block;
+            max-width: 100%;
+        }
+    }
+
+    .hidden{
+        display: none !important;
+    }
+
+    &.loading{
+        .btn-add{
+            opacity: 0.5;
+
+            i{
+                display: inline-block;
+            }
+        }
+
+        &:after{
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    }
+}
+
+#backend-carousels-index{
+    .card{
+        position: relative;
+        
+        .card-body{
+            padding: 10px;
+        }
+
+        .controls{
+            opacity: 0;
+            transition: all .15s ease-in-out;
+
+            .left{
+                position: absolute;
+                top: 2px;
+                left: 2px;
+            }
+
+            .center{
+                position: absolute;
+                top: 2px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .right{
+                position: absolute;
+                top: 2px;
+                right: 2px;
+            }
+        }
+
+
+        &:hover .controls{
+            opacity: 1;
+        }
+    }
+}

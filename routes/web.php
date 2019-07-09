@@ -12,14 +12,23 @@
  */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        'carousel' => \App\Carousel::ordered()->get()
+    ]);
 })->name('home');
+
+Route::get('images/{filename}', 'UploadController@get')->name('uploaded');
 
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('/profile', 'UserController@edit')->name('users.profile');
-    Route::put('/profile', 'UserController@update');
+    Route::match(['put', 'post'], 'upload', 'UploadController@upload')->name('upload');
+
+    Route::get('profile', 'UserController@edit')->name('users.profile');
+    Route::put('profile', 'UserController@update');
+
+    Route::resource('carousels', 'CarouselController')->except(['show']);
+    Route::get('carousels/{carousel}/{sort}', 'CarouselController@sort')->where(['sort' => 'up|down'])->name('carousels.sort');
 });
 
 Route::group(['middleware' => ['auth', 'admin_user']], function() {

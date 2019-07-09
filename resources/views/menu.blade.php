@@ -21,6 +21,8 @@
             @if(isAdmin())
             <a  class="dropdown-item" href="{{ route('users.index') }}"><i class="fa fa-users"></i> @lang("Users")</a>
             @endif
+            
+            <a  class="dropdown-item" href="{{ route('carousels.index') }}"><i class="fa fa-picture-o"></i> @lang("Carrousel")</a>
 
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> @lang("Logout")</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
