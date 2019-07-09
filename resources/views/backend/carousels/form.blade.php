@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('backend.layout')
 
 @section('content')
 <main role="main" class="container" id="users-index">
@@ -24,21 +24,21 @@
 
             <div class="row">
                 <div class="col-12 col-md-4">
-                    @include('blocks.upload', [
+                    @include('backend.upload', [
                     'name' => 'image_desktop', 
                     'label' => 'Image desktop',
                     'value' => $carousel->image_desktop
                     ])
                 </div>
                 <div class="col-12 col-md-4">
-                    @include('blocks.upload', [
+                    @include('backend.upload', [
                     'name' => 'image_mobile', 
                     'label' => 'Image mobile',
                     'value' => $carousel->image_mobile
                     ])
                 </div>
                 <div class="col-12 col-md-4">
-                    @include('blocks.upload', [
+                    @include('backend.upload', [
                     'name' => 'image_front', 
                     'label' => 'Aperçu',
                     'value' => $carousel->image_front
@@ -46,7 +46,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-6">
                     <a href="{{ route('carousels.index') }}" class="btn btn-light">@lang("Cancel")</a>
                 </div>

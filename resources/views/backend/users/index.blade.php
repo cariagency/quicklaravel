@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('backend.layout')
 
 @section('content')
 <main role="main" class="container" id="users-index">

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('backend.layout')
 
 @php($profile = (\Request::route()->getName() === 'users.profile'))
 @php($me = (user()->id === $user->id))

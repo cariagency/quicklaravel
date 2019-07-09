@@ -8,7 +8,7 @@
         <img/>
     </div>
 
-    <a href="#" class="btn btn-primary btn-sm btn-add btn-block hidden">
+    <a href="#" class="btn btn-primary btn-add hidden">
         <span>Ajouter une image</span>
         <i class="fa fa-spinner fa-spin fa-fw"></i>
         <input type="file" name="file">

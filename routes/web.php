@@ -1,36 +1,38 @@
 <?php
 
 /*
-  |--------------------------------------------------------------------------
-  | Web Routes
-  |--------------------------------------------------------------------------
-  |
-  | Here is where you can register web routes for your application. These
-  | routes are loaded by the RouteServiceProvider within a group which
-  | contains the "web" middleware group. Now create something great!
-  |
+ * PUBLIC
  */
 
-Route::get('/', function () {
-    return view('home', [
-        'carousel' => \App\Carousel::ordered()->get()
-    ]);
-})->name('home');
+Auth::routes(['register' => false]);
 
-Route::get('images/{filename}', 'UploadController@get')->name('uploaded');
+Route::get('/', 'MainController@home')->name('home');
 
-Auth::routes();
+Route::get('images/{filename}', 'MainController@uploaded')->name('uploaded');
 
-Route::group(['middleware' => ['auth']], function() {
-    Route::match(['put', 'post'], 'upload', 'UploadController@upload')->name('upload');
+/*
+ * PRIVATE
+ */
 
-    Route::get('profile', 'UserController@edit')->name('users.profile');
-    Route::put('profile', 'UserController@update');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
+    // Admin index.
+    Route::get('/', function() {
+        return redirect()->route('carousels.index');
+    })->name('admin');
 
-    Route::resource('carousels', 'CarouselController')->except(['show']);
-    Route::get('carousels/{carousel}/{sort}', 'CarouselController@sort')->where(['sort' => 'up|down'])->name('carousels.sort');
-});
+    // Upload picture.
+    Route::match(['put', 'post'], 'upload', 'MainController@upload')->name('upload');
 
-Route::group(['middleware' => ['auth', 'admin_user']], function() {
-    Route::resource('users', 'UserController')->except(['show']);
+    // Manage user profile.
+    Route::get('profile', 'Backend\UserController@edit')->name('users.profile');
+    Route::put('profile', 'Backend\UserController@update');
+
+    // Manage carousel.
+    Route::resource('carousels', 'Backend\CarouselController')->except(['show']);
+    Route::get('carousels/{carousel}/{sort}', 'Backend\CarouselController@sort')->where(['sort' => 'up|down'])->name('carousels.sort');
+
+    // Admin only.
+    Route::group(['middleware' => ['admin_user']], function() {
+        Route::resource('users', 'Backend\UserController')->except(['show']);
+    });
 });

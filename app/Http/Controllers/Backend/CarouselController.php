@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Carousel;
-use Illuminate\Http\Request;
 use App\Http\Requests\CarouselForm;
-use File;
 
 class CarouselController extends Controller {
 
     public function index() {
-        return view('carousels.index', [
+        return view('backend.carousels.index', [
             'carousels' => Carousel::ordered()->get()
         ]);
     }
 
     public function create() {
-        return view('carousels.form', [
+        return view('backend.carousels.form', [
             'carousel' => new Carousel()
         ]);
     }
@@ -29,7 +28,7 @@ class CarouselController extends Controller {
     }
 
     public function edit(Carousel $carousel) {
-        return view('carousels.form', [
+        return view('backend.carousels.form', [
             'carousel' => $carousel
         ]);
     }
